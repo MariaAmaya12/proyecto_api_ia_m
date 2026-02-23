@@ -42,12 +42,7 @@ El conjunto de datos contiene información sobre inmuebles en Bogotá, Colombia.
 - **UPZ**: Unidad de Planeamiento Zonal
 - **Valor**: precio en pesos colombianos
 
-### Posibles aplicaciones analíticas:
 
-- Análisis del mercado inmobiliario
-- Comparación de precios por zona
-- Modelos predictivos de precios
-- Identificación de patrones urbanos
 
 Archivo principal utilizado:
 
