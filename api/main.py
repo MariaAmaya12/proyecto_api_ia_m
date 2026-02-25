@@ -1,16 +1,20 @@
+
+## Levanta una API que recibe datos tabulares en formato JSON, 
+# ejecuta tu limpieza y devuelve un reporte estructurado.
+
 from __future__ import annotations
 
 from typing import Any
 
 import pandas as pd
-from fastapi import FastAPI
+from fastapi import FastAPI ##para crear la app
 from pydantic import BaseModel, Field
 
 from limpieza import DataCleaner, LimpiezaConfigSchema, LimpiezaReporteSchema
 
 app = FastAPI(title="API Limpieza - Proyecto")
 
-
+## se define el contrato de entrada del endpoint
 class LimpiezaRequest(BaseModel):
     """
     Request para la API:
@@ -20,6 +24,7 @@ class LimpiezaRequest(BaseModel):
     config: LimpiezaConfigSchema = Field(default_factory=LimpiezaConfigSchema)
     data: list[dict[str, Any]] = Field(..., min_length=1)
 
+#
 
 @app.post("/limpiar", response_model=LimpiezaReporteSchema)
 def limpiar(request: LimpiezaRequest) -> LimpiezaReporteSchema:
@@ -30,7 +35,8 @@ def limpiar(request: LimpiezaRequest) -> LimpiezaReporteSchema:
 
     return reporte
 
-
+## Devuelve un mensaje simple indicando que la API está viva 
+# y que revises /docs
 @app.get("/")
 def root():
     return {"message": "API de limpieza activa. Ve a /docs"}
