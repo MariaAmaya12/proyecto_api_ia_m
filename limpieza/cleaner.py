@@ -1,8 +1,11 @@
+## Proveer una interfaz orientada a objetos para
+# ejecutar la limpieza con config validada.
+
+
 from __future__ import annotations
-
 from typing import Any, Mapping, Optional
-
 import pandas as pd
+
 
 from .pipeline import (
     convertir_a_numerico_seguro,

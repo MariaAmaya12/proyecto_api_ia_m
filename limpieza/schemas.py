@@ -1,10 +1,12 @@
+##Define los contratos (input/output) de la limpieza con Pydantic.
+
 from __future__ import annotations
 
 from typing import Any, Optional
 
 from pydantic import BaseModel, Field, ConfigDict
 
-
+## valida la configuración del pipeline
 class LimpiezaConfigSchema(BaseModel):
     """
     Contrato de entrada (Input) para configurar la limpieza.
@@ -14,7 +16,8 @@ class LimpiezaConfigSchema(BaseModel):
     - restricciones básicas con Field
     """
 
-    model_config = ConfigDict(extra="forbid")  # no permite parámetros desconocidos
+    model_config = ConfigDict(extra="forbid")  #no permite parámetros desconocidos
+##Campos claves 
 
     columnas_monetarias: Optional[list[str]] = Field(
         default=None,
@@ -33,7 +36,6 @@ class LimpiezaConfigSchema(BaseModel):
         description="Estrategia de imputación numérica.",
         pattern="^(median|mean)$",
         examples=["median"],
-    )
 
     estrategia_cat: str = Field(
         default="moda",
@@ -50,6 +52,7 @@ class LimpiezaConfigSchema(BaseModel):
     )
 
 
+## Estructura un reporte serializable para retornarlo en una API.
 class LimpiezaReporteSchema(BaseModel):
     """
     Contrato de salida (Output) para reportar el resultado de la limpieza.
