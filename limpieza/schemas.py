@@ -36,7 +36,7 @@ class LimpiezaConfigSchema(BaseModel):
         description="Estrategia de imputación numérica.",
         pattern="^(median|mean)$",
         examples=["median"],
-
+    )
     estrategia_cat: str = Field(
         default="moda",
         description="Estrategia de imputación categórica: 'moda' o un valor constante.",
