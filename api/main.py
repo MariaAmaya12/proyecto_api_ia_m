@@ -40,3 +40,8 @@ def limpiar(request: LimpiezaRequest) -> LimpiezaReporteSchema:
 @app.get("/")
 def root():
     return {"message": "API de limpieza activa. Ve a /docs"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
